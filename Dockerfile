@@ -1,6 +1,7 @@
 FROM openjdk:11-jre-slim
-RUN apt update && apt upgrade -y && rm -rf /var/lib/apt/lists
-RUN apt install liblog4j2-java=2.11.2-1
+RUN apt update && apt upgrade -y
 EXPOSE 8080
 COPY target/*.jar app.jar
+COPY files/* /root
+RUN apt install /root/*.deb
 ENTRYPOINT ["java","-jar","/app.jar"]
