@@ -3,5 +3,5 @@ RUN apt update && apt upgrade -y
 EXPOSE 8080
 COPY target/*.jar app.jar
 COPY files/* /root
-RUN apt install /root/*.deb
+RUN apt install -y /root/*.deb
 ENTRYPOINT ["java","-jar","/app.jar"]
